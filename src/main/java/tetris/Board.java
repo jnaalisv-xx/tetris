@@ -22,6 +22,9 @@ public class Board {
     }
     
     public void drop(Block block) {
+    	if (this.hasFallingBlock)
+    		throw new IllegalStateException("already falling");
+    	
     	this.hasFallingBlock = true;
     	this.fallingBlockX = this.columns / 2;
     	this.fallingBlockY = 0;
