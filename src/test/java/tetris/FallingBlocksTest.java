@@ -59,13 +59,13 @@ public class FallingBlocksTest {
                     "...\n", board.toString());
         }
 
-//        public void test_It_moves_down_one_row_per_tick() {
-//            board.tick();
-//            assertEquals("" +
-//                    "...\n" +
-//                    ".X.\n" +
-//                    "...\n", board.toString());
-//        }
+        public void test_It_moves_down_one_row_per_tick() {
+            board.tick();
+            assertEquals("" +
+                    "...\n" +
+                    ".X.\n" +
+                    "...\n", board.toString());
+        }
 
 //        public void test_At_most_one_block_may_be_falling_at_a_time() {
 //            try {

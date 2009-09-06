@@ -27,6 +27,10 @@ public class Board {
     	this.fallingBlockY = 0;
     	this.block = block;
     }
+    
+    public void tick() {
+    	this.fallingBlockY = this.fallingBlockY+1;
+    }
 
     public String toString() {
         String s = "";
