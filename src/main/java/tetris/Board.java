@@ -7,14 +7,15 @@ public class Board {
     private boolean hasFallingBlock;
     private int fallingBlockX;
     private int fallingBlockY;
-    private Block block;
+    private Block[][] blocks;
 
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
         this.hasFallingBlock = false;
-        this.fallingBlockX = -1;
-        this.fallingBlockY = -1;
+        //this.fallingBlockX = -1;
+        //this.fallingBlockY = -1;
+        this.blocks = new Block[this.rows][this.columns];
     }
     
     public boolean hasFalling() {
@@ -28,14 +29,37 @@ public class Board {
     	this.hasFallingBlock = true;
     	this.fallingBlockX = this.columns / 2;
     	this.fallingBlockY = 0;
-    	this.block = block;
+    	this.blocks[this.fallingBlockY][this.fallingBlockX] = block;
     }
     
     public void tick() {
-    	if (this.fallingBlockY < this.rows -1)
-    		this.fallingBlockY = this.fallingBlockY+1;
-    	else {
-    		this.hasFallingBlock = false;
+    	// jos meillä on tippuva blokki
+    	if (this.hasFallingBlock) {
+    		
+    		// jos alhaalla on tilaa
+	    	if (this.fallingBlockY < this.rows -1 && 
+	    			blocks[this.fallingBlockY+1][this.fallingBlockX] == null) {
+	    		
+	    		// uusi sijainti riviä alempana
+	    		int newFallingBlockY = this.fallingBlockY+1;
+	    		
+	    		// tiputetaan blokki uuteen sijaintiin
+	    		this.blocks[newFallingBlockY][this.fallingBlockX] = 
+	    			this.blocks[this.fallingBlockY][this.fallingBlockX];
+	    		
+	    		// nollataan vanha paikka
+	    		this.blocks[this.fallingBlockY][this.fallingBlockX] = null;
+	    		
+	    		this.fallingBlockY = newFallingBlockY;
+	    		
+	    	}
+	    	else {
+	    		// ei ollut tilaa, ei liikutetan palikkaa, asetetaan lippu
+	    		// jotta meillä ei ole putoavia palikoita
+	    		this.hasFallingBlock = false;
+	    		//this.fallingBlockX = -1;
+	    		//this.fallingBlockY = -1;
+	    	}
     	}
     }
 
@@ -43,10 +67,11 @@ public class Board {
         String s = "";
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-            	if (this.fallingBlockX == col && this.fallingBlockY == row)
-            		s += this.block.toString();
-            	else
+            	if (this.blocks[row][col] == null)
             		s += ".";
+            	else
+            		s += this.blocks[row][col].toString();
+
             }
             s += "\n";
         }
