@@ -82,7 +82,7 @@ public class FallingBlocksTest {
     }
 
 
-/*
+
     public static class When_a_block_reaches_the_bottom extends TestCase {
 
         private Board board;
@@ -102,16 +102,16 @@ public class FallingBlocksTest {
                     ".X.\n", board.toString());
         }
 
-//        public void test_It_stops_when_it_hits_the_bottom() {
-//            board.tick();
-//            assertFalse(board.hasFalling());
-//            assertEquals("" +
-//                    "...\n" +
-//                    "...\n" +
-//                    ".X.\n", board.toString());
-//        }
+        public void test_It_stops_when_it_hits_the_bottom() {
+            board.tick();
+            assertFalse(board.hasFalling());
+            assertEquals("" +
+                    "...\n" +
+                    "...\n" +
+                    ".X.\n", board.toString());
+        }
     }
-*/
+
 
 /*
     public static class When_a_block_lands_on_another_block extends TestCase {

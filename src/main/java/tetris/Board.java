@@ -32,7 +32,11 @@ public class Board {
     }
     
     public void tick() {
-    	this.fallingBlockY = this.fallingBlockY+1;
+    	if (this.fallingBlockY < this.rows -1)
+    		this.fallingBlockY = this.fallingBlockY+1;
+    	else {
+    		this.hasFallingBlock = false;
+    	}
     }
 
     public String toString() {
