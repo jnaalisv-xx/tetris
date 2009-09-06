@@ -9,6 +9,10 @@ public class Board {
         this.rows = rows;
         this.columns = columns;
     }
+    
+    public boolean hasFalling() {
+    	return false;
+    }
 
     public String toString() {
         String s = "";

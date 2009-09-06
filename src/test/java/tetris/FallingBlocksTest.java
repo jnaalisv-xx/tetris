@@ -33,9 +33,9 @@ public class FallingBlocksTest {
                     "...\n", board.toString());
         }
 
-//        public void test_Has_no_falling_blocks() {
-//            assertFalse(board.hasFalling());
-//        }
+        public void test_Has_no_falling_blocks() {
+            assertFalse(board.hasFalling());
+        }
     }
 
 /*
