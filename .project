@@ -1,0 +1,13 @@
+<projectDescription>
+  <name>tdd-tetris-tutorial</name>
+  <comment>Tutorial for learning TDD. You make a Tetris game by writing code to pass the test cases.</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>
