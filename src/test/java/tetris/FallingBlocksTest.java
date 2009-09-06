@@ -52,12 +52,12 @@ public class FallingBlocksTest {
             assertTrue(board.hasFalling());
         }
 
-//        public void test_It_starts_from_the_top_middle() {
-//            assertEquals("" +
-//                    ".X.\n" +
-//                    "...\n" +
-//                    "...\n", board.toString());
-//        }
+        public void test_It_starts_from_the_top_middle() {
+            assertEquals("" +
+                    ".X.\n" +
+                    "...\n" +
+                    "...\n", board.toString());
+        }
 
 //        public void test_It_moves_down_one_row_per_tick() {
 //            board.tick();
