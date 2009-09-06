@@ -4,14 +4,20 @@ public class Board {
 
     private final int rows;
     private final int columns;
+    private boolean hasFallingBlock;
 
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
+        this.hasFallingBlock = false;
     }
     
     public boolean hasFalling() {
-    	return false;
+    	return this.hasFallingBlock;
+    }
+    
+    public void drop(Block block) {
+    	this.hasFallingBlock = true;
     }
 
     public String toString() {
@@ -24,4 +30,12 @@ public class Board {
         }
         return s;
     }
+}
+
+class Block {
+	private final char c;
+	
+	public Block(char c) {
+		this.c = c;
+	}
 }

@@ -38,7 +38,7 @@ public class FallingBlocksTest {
         }
     }
 
-/*
+
     public static class When_a_block_is_dropped extends TestCase {
 
         private Board board;
@@ -80,7 +80,7 @@ public class FallingBlocksTest {
 //                    "...\n", board.toString());
 //        }
     }
-*/
+
 
 /*
     public static class When_a_block_reaches_the_bottom extends TestCase {
