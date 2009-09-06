@@ -13,8 +13,6 @@ public class Board {
         this.rows = rows;
         this.columns = columns;
         this.hasFallingBlock = false;
-        //this.fallingBlockX = -1;
-        //this.fallingBlockY = -1;
         this.blocks = new Block[this.rows][this.columns];
     }
     
@@ -57,8 +55,6 @@ public class Board {
 	    		// ei ollut tilaa, ei liikutetan palikkaa, asetetaan lippu
 	    		// jotta meillä ei ole putoavia palikoita
 	    		this.hasFallingBlock = false;
-	    		//this.fallingBlockX = -1;
-	    		//this.fallingBlockY = -1;
 	    	}
     	}
     }
