@@ -31,7 +31,6 @@ public class Board {
     }
     
     public void tick() {
-    	// jos meillä on tippuva blokki
     	if (this.hasFallingBlock) {
     		
     		// jos alhaalla on tilaa
@@ -75,14 +74,4 @@ public class Board {
     }
 }
 
-class Block {
-	private final char c;
-	
-	public Block(char c) {
-		this.c = c;
-	}
-	
-	public String toString() {
-		return Character.toString(this.c);
-	}
-}
+

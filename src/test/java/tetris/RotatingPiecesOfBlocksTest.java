@@ -18,7 +18,7 @@ public class RotatingPiecesOfBlocksTest {
         return new TestSuite(RotatingPiecesOfBlocksTest.class.getDeclaredClasses());
     }
 
-/*
+
     public static class A_piece_of_3x3_blocks extends TestCase {
 
         private Piece piece;
@@ -37,25 +37,25 @@ public class RotatingPiecesOfBlocksTest {
                     "...\n", piece.toString());
         }
 
-//        public void test_Can_be_rotated_right() {
-//            piece = piece.rotateRight();
-//            assertEquals("" +
-//                    "...\n" +
-//                    ".XX\n" +
-//                    "...\n", piece.toString());
-//        }
+        public void test_Can_be_rotated_right() {
+            piece = piece.rotateRight();
+            assertEquals("" +
+                    "...\n" +
+                    ".XX\n" +
+                    "...\n", piece.toString());
+        }
 
-//        public void test_Can_be_rotated_left() {
-//            piece = piece.rotateLeft();
-//            assertEquals("" +
-//                    "...\n" +
-//                    "XX.\n" +
-//                    "...\n", piece.toString());
-//        }
+        public void test_Can_be_rotated_left() {
+            piece = piece.rotateLeft();
+            assertEquals("" +
+                    "...\n" +
+                    "XX.\n" +
+                    "...\n", piece.toString());
+        }
     }
-*/
 
-/*
+
+
     public static class A_piece_of_5x5_blocks extends TestCase {
 
         private Piece piece;
@@ -78,25 +78,25 @@ public class RotatingPiecesOfBlocksTest {
                     ".....\n", piece.toString());
         }
 
-//        public void test_Can_be_rotated_right() {
-//            piece = piece.rotateRight();
-//            assertEquals("" +
-//                    ".....\n" +
-//                    ".....\n" +
-//                    "..XXX\n" +
-//                    "...XX\n" +
-//                    "....X\n", piece.toString());
-//        }
+        public void test_Can_be_rotated_right() {
+            piece = piece.rotateRight();
+            assertEquals("" +
+                    ".....\n" +
+                    ".....\n" +
+                    "..XXX\n" +
+                    "...XX\n" +
+                    "....X\n", piece.toString());
+        }
 
-//        public void test_Can_be_rotated_left() {
-//            piece = piece.rotateLeft();
-//            assertEquals("" +
-//                    "X....\n" +
-//                    "XX...\n" +
-//                    "XXX..\n" +
-//                    ".....\n" +
-//                    ".....\n", piece.toString());
-//        }
+        public void test_Can_be_rotated_left() {
+            piece = piece.rotateLeft();
+            assertEquals("" +
+                    "X....\n" +
+                    "XX...\n" +
+                    "XXX..\n" +
+                    ".....\n" +
+                    ".....\n", piece.toString());
+        }
     }
-*/
+
 }
