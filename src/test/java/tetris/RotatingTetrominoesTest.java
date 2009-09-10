@@ -98,8 +98,6 @@ public class RotatingTetrominoesTest {
         }
     }
 
-
-
     public static class The_I_shape extends TestCase {
 
         private Tetrominoe shape;
@@ -119,7 +117,6 @@ public class RotatingTetrominoesTest {
 
         public void test_Can_be_rotated_right_once() {
             shape = shape.rotateRight();
-            System.out.println(shape.toString());
             assertEquals("" +
                     ".....\n" +
                     "..I..\n" +
@@ -128,27 +125,25 @@ public class RotatingTetrominoesTest {
                     "..I..\n", shape.toString());
         }
 
-//        public void test_Can_be_rotated_left_once() {
-//            shape = shape.rotateLeft();
-//            assertEquals("" +
-//                    ".....\n" +
-//                    "..I..\n" +
-//                    "..I..\n" +
-//                    "..I..\n" +
-//                    "..I..\n", shape.toString());
-//        }
+        public void test_Can_be_rotated_left_once() {
+            shape = shape.rotateLeft();
+            assertEquals("" +
+                    ".....\n" +
+                    "..I..\n" +
+                    "..I..\n" +
+                    "..I..\n" +
+                    "..I..\n", shape.toString());
+        }
 
-//        public void test_Rotating_it_twise_will_get_back_to_the_original_shape() {
-//            String originalShape = shape.toString();
-//            shape = shape.rotateRight().rotateRight();
-//            assertEquals(originalShape, shape.toString());
-//            shape = shape.rotateLeft().rotateLeft();
-//            assertEquals(originalShape, shape.toString());
-//        }
+        public void test_Rotating_it_twise_will_get_back_to_the_original_shape() {
+            String originalShape = shape.toString();
+            shape = shape.rotateRight().rotateRight();
+            assertEquals(originalShape, shape.toString());
+            shape = shape.rotateLeft().rotateLeft();
+            assertEquals(originalShape, shape.toString());
+        }
     }
 
-
-/*
     public static class The_O_shape extends TestCase {
 
         private Tetrominoe shape;
@@ -164,21 +159,21 @@ public class RotatingTetrominoesTest {
                     "...\n", shape.toString());
         }
 
-//        public void test_Can_not_be_rotated_right() {
-//            shape = shape.rotateRight();
-//            assertEquals("" +
-//                    ".OO\n" +
-//                    ".OO\n" +
-//                    "...\n", shape.toString());
-//        }
+        public void test_Can_not_be_rotated_right() {
+            shape = shape.rotateRight();
+            assertEquals("" +
+                    ".OO\n" +
+                    ".OO\n" +
+                    "...\n", shape.toString());
+        }
 
-//        public void test_Can_not_be_rotated_left() {
-//            shape = shape.rotateLeft();
-//            assertEquals("" +
-//                    ".OO\n" +
-//                    ".OO\n" +
-//                    "...\n", shape.toString());
-//        }
+        public void test_Can_not_be_rotated_left() {
+            shape = shape.rotateLeft();
+            assertEquals("" +
+                    ".OO\n" +
+                    ".OO\n" +
+                    "...\n", shape.toString());
+        }
     }
-*/
+
 }
