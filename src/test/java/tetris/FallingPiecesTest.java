@@ -18,7 +18,6 @@ public class FallingPiecesTest {
         return new TestSuite(FallingPiecesTest.class.getDeclaredClasses());
     }
 
-/*
     public static class When_a_piece_is_dropped extends TestCase {
 
         private Board board;
@@ -38,7 +37,7 @@ public class FallingPiecesTest {
                     "........\n", board.toString());
         }
     }
-*/
+
 
 /*
     public static class When_a_piece_reaches_the_bottom extends TestCase {

@@ -72,6 +72,11 @@ public class Board {
         }
         return s;
     }
+
+	public void drop(Tetrominoe shape) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 
