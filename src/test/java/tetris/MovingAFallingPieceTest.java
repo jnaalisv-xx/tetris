@@ -15,8 +15,94 @@ public class MovingAFallingPieceTest {
         return new TestSuite(MovingAFallingPieceTest.class.getDeclaredClasses());
     }
 
-    // TODO: a falling piece can be moved left
+    public static class When_a_piece_is_moved_to_the_left extends TestCase {
+
+        private Board board;
+
+        protected void setUp() throws Exception {
+            board = new Board(6, 8);
+            board.drop(Tetrominoe.T_SHAPE);
+        }
+
+        public void test_It_can_be_moved_left() {
+        	
+        	board.moveLeft();
+            assertEquals("" +
+                    "...T....\n" +
+                    "..TTT...\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+            board.tick();
+            assertEquals("" +
+                    "........\n" +            		
+                    "...T....\n" +
+                    "..TTT...\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        	board.moveLeft();
+        	board.moveLeft();
+            assertEquals("" +
+                    "........\n" +            		
+                    ".T......\n" +
+                    "TTT.....\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        	board.moveLeft();
+            assertEquals("" +
+                    "........\n" +            		
+                    ".T......\n" +
+                    "TTT.....\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        } 
+    }    
+    
+    
     // TODO: a falling piece can be moved right
+    public static class When_a_piece_is_moved_to_the_right extends TestCase {
+
+        private Board board;
+
+        protected void setUp() throws Exception {
+            board = new Board(6, 8);
+            board.drop(Tetrominoe.T_SHAPE);
+        }
+
+        public void test_It_can_be_moved_right() {
+        	
+        	board.moveRight();
+            assertEquals("" +
+                    ".....T..\n" +
+                    "....TTT.\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+            board.tick();
+            assertEquals("" +
+                    "........\n" +            		
+                    ".....T..\n" +
+                    "....TTT.\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        	board.moveRight();
+        	board.moveRight();
+            assertEquals("" +
+                    "........\n" +            		
+                    "......T.\n" +
+                    ".....TTT\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        } 
+    }  
+    
     // TODO: a falling piece can be moved down
     // TODO: it will not move left over over the board
     // TODO: it will not move right over over the board

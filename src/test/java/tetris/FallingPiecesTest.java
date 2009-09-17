@@ -40,7 +40,7 @@ public class FallingPiecesTest {
     }
 
 
-/*
+
     public static class When_a_piece_reaches_the_bottom extends TestCase {
 
         private Board board;
@@ -49,7 +49,7 @@ public class FallingPiecesTest {
             board = new Board(6, 8);
             board.drop(Tetrominoe.T_SHAPE);
             board.tick();
-            board.tick();
+            board.tick();           
             board.tick();
             board.tick();
         }
@@ -65,21 +65,21 @@ public class FallingPiecesTest {
                     "...TTT..\n", board.toString());
         }
 
-//        public void test_It_stops_when_it_hits_the_bottom() {
-//            board.tick();
-//            assertFalse(board.hasFalling());
-//            assertEquals("" +
-//                    "........\n" +
-//                    "........\n" +
-//                    "........\n" +
-//                    "........\n" +
-//                    "....T...\n" +
-//                    "...TTT..\n", board.toString());
-//        }
+        public void test_It_stops_when_it_hits_the_bottom() {
+            board.tick();
+            assertFalse(board.hasFalling());
+            assertEquals("" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "....T...\n" +
+                    "...TTT..\n", board.toString());
+        }
     }
-*/
 
-/*
+
+
     public static class When_a_piece_lands_on_another_piece extends TestCase {
 
         private Board board;
@@ -116,17 +116,17 @@ public class FallingPiecesTest {
                     "...TTT..\n", board.toString());
         }
 
-//        public void test_It_stops_when_it_hits_the_other_piece() {
-//            board.tick();
-//            assertFalse(board.hasFalling());
-//            assertEquals("" +
-//                    "........\n" +
-//                    "........\n" +
-//                    "....T...\n" +
-//                    "...TTT..\n" +
-//                    "....T...\n" +
-//                    "...TTT..\n", board.toString());
-//        }
+        public void test_It_stops_when_it_hits_the_other_piece() {
+            board.tick();
+            assertFalse(board.hasFalling());
+            assertEquals("" +
+                    "........\n" +
+                    "........\n" +
+                    "....T...\n" +
+                    "...TTT..\n" +
+                    "....T...\n" +
+                    "...TTT..\n", board.toString());
+        }
     }
-*/
+
 }

@@ -17,7 +17,8 @@ public class Piece {
 		this.vblocks = new Vector<Block>();	
 		for(int row = 0; row < size; row++)
 			for (int col = 0; col < size; col++) {
-				this.vblocks.add(
+				if (rows[row].charAt(col) != '.')
+					this.vblocks.add(
 						new Block(rows[row].charAt(col), 
 								col - distanceFromCenter, 
 								row -distanceFromCenter));
@@ -34,14 +35,14 @@ public class Piece {
 
 	public String toString() {
 
-		// TODO: nimeäminen!!!
+		// TODO: nimeminen!!!
 		Block[][] tmpBlocks = new Block[size][size];
 
-		// Blokki taulukko johon isketään oikeisiin kohtiin palikat
+		// Blokki taulukko johon isketn oikeisiin kohtiin palikat
         for( Block b : vblocks) 
         	tmpBlocks[b.dispY + distanceFromCenter][b.dispX + distanceFromCenter] = b;
 
-        // yks vaihtoehto on että meillä on char array johon tökitään merkit ja joka tulostetaan
+        // yks vaihtoehto on ett meill on char array johon tkitn merkit ja joka tulostetaan
         // ja sitten tulostetaan, hmm ois parempi
 		// koska tetrominoe on immutable
         StringBuilder sb = new StringBuilder();
