@@ -1,8 +1,11 @@
 package tetris;
 
+//import java.util.Vector;
+
 public class Piece {
 
 	protected final Block[][] blocks;
+	//protected final Vector<Block> vblocks;
 
 	public Piece(String string) {
 		String[] rows = string.split("\n");

@@ -53,7 +53,7 @@ public class FallingBlocksTest {
         }
 
         public void test_It_starts_from_the_top_middle() {
-            assertEquals("" +
+        	assertEquals("" +
                     ".X.\n" +
                     "...\n" +
                     "...\n", board.toString());
@@ -81,17 +81,18 @@ public class FallingBlocksTest {
         }
     }
 
-
+       
 
     public static class When_a_block_reaches_the_bottom extends TestCase {
 
         private Board board;
 
         protected void setUp() throws Exception {
-            board = new Board(3, 3);
+            board = new Board(3, 3);      
             board.drop(new Block('X'));
             board.tick();
             board.tick();
+ 
         }
 
         public void test_It_is_still_falling_on_the_last_row() {
@@ -102,9 +103,9 @@ public class FallingBlocksTest {
                     ".X.\n", board.toString());
         }
 
-        public void test_It_stops_when_it_hits_the_bottom() {
-            board.tick();
-            assertFalse(board.hasFalling());
+        public void test_It_stops_when_it_hits_the_bottom() {          
+        	board.tick();
+            assertFalse(board.hasFalling());                      
             assertEquals("" +
                     "...\n" +
                     "...\n" +

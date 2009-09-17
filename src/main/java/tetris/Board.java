@@ -5,77 +5,98 @@ public class Board {
     private final int rows;
     private final int columns;
     private boolean hasFallingBlock;
-    private int fallingBlockX;
-    private int fallingBlockY;
+    private Block fallingBlock;
     private Block[][] blocks;
+    private boolean hasFallingTetrominoe;
+    private Tetrominoe fallingTetrominoe;
 
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
         this.hasFallingBlock = false;
+        this.hasFallingTetrominoe = false;
         this.blocks = new Block[this.rows][this.columns];
     }
     
     public boolean hasFalling() {
-    	return this.hasFallingBlock;
+    	return this.hasFallingBlock || this.hasFallingTetrominoe;
     }
     
     public void drop(Block block) {
-    	if (this.hasFallingBlock)
-    		throw new IllegalStateException("already falling");
+    	if (this.hasFallingBlock || this.hasFallingTetrominoe)
+    		throw new IllegalStateException("There is a block/shape already falling");
     	
     	this.hasFallingBlock = true;
-    	this.fallingBlockX = this.columns / 2;
-    	this.fallingBlockY = 0;
-    	this.blocks[this.fallingBlockY][this.fallingBlockX] = block;
+    	this.fallingBlock = block;
+    	this.fallingBlock.x = this.columns / 2;
+    	this.fallingBlock.y = 0;
     }
     
     public void tick() {
     	if (this.hasFallingBlock) {
     		
+    		
     		// jos alhaalla on tilaa
-	    	if (this.fallingBlockY < this.rows -1 && 
-	    			blocks[this.fallingBlockY+1][this.fallingBlockX] == null) {
+	    	if (this.fallingBlock.y < this.rows -1 && 
+	    			blocks[this.fallingBlock.y+1][this.fallingBlock.x] == null) {
 	    		
-	    		// uusi sijainti riviä alempana
-	    		int newFallingBlockY = this.fallingBlockY+1;
-	    		
+	    		this.fallingBlock.y = this.fallingBlock.y + 1;
+	    			    		
 	    		// tiputetaan blokki uuteen sijaintiin
-	    		this.blocks[newFallingBlockY][this.fallingBlockX] = 
-	    			this.blocks[this.fallingBlockY][this.fallingBlockX];
+	    		this.blocks[fallingBlock.y][this.fallingBlock.x] = 
+	    			this.blocks[this.fallingBlock.y-1][this.fallingBlock.x];
 	    		
 	    		// nollataan vanha paikka
-	    		this.blocks[this.fallingBlockY][this.fallingBlockX] = null;
-	    		
-	    		this.fallingBlockY = newFallingBlockY;
+	    		this.blocks[this.fallingBlock.y-1][this.fallingBlock.x] = null;
 	    		
 	    	}
 	    	else {
-	    		// ei ollut tilaa, ei liikutetan palikkaa, asetetaan lippu
-	    		// jotta meillä ei ole putoavia palikoita
 	    		this.hasFallingBlock = false;
+	    		copyBlockToBoard(this.blocks, this.fallingBlock);
+	    		this.fallingBlock = null;   		
 	    	}
     	}
     }
 
+	private void copyBlockToBoard(Block[][] blocks, Block block) {
+		blocks[block.y][block.x] = block;
+	}
+
     public String toString() {
-        String s = "";
+    	
+    	Block[][] blocksToBePrinted = cloneBoard(this.blocks);
+    		  	
+    	if (this.hasFallingBlock)
+    		copyBlockToBoard(blocksToBePrinted, this.fallingBlock);
+
+    	if (this.hasFallingTetrominoe)
+    		copyTetrominoeToBoard(blocksToBePrinted, this.fallingTetrominoe);
+    	
+        StringBuilder sb = new StringBuilder();
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-            	if (this.blocks[row][col] == null)
-            		s += ".";
+            	if (blocksToBePrinted[row][col] == null)
+            		sb.append(".");
             	else
-            		s += this.blocks[row][col].toString();
+            		sb.append(blocksToBePrinted[row][col].toChar());
 
             }
-            s += "\n";
-        }
-        return s;
+            sb.append("\n");
+        } 
+        return sb.toString();
     }
 
-	public void drop(Tetrominoe shape) {
-		// TODO Auto-generated method stub
-		
+	private void copyTetrominoeToBoard(Block[][] blocksToBePrinted, Tetrominoe fallingTetrominoe2) {
+		//for(int row = 0; row )		
+	}
+
+	private Block[][] cloneBoard(Block[][] blocks) {
+		Block[][] clone = 
+			new Block[blocks.length][blocks[0].length];
+    	
+    	for(int row = 0; row < blocks.length; row++) 
+    		System.arraycopy(blocks[row], 0, clone[row], 0, blocks[row].length);
+    	return clone;
 	}
 }
 
