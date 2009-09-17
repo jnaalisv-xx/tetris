@@ -32,6 +32,17 @@ public class Board {
     	this.fallingBlock.y = 0;
     }
     
+	public void drop(Tetrominoe shape) {
+    	if (this.hasFallingBlock || this.hasFallingTetrominoe)
+    		throw new IllegalStateException("There is a block/shape already falling");
+    	
+    	// seurataan tetrominoen keskippistettä
+    	this.hasFallingTetrominoe = true;
+    	this.fallingTetrominoe = shape;
+    	this.fallingTetrominoe.x = this.columns / 2;
+    	this.fallingTetrominoe.y = this.fallingTetrominoe.getDistanceFromCenter();
+	}    
+    
     public void tick() {
     	if (this.hasFallingBlock) {
     		
@@ -55,6 +66,11 @@ public class Board {
 	    		copyBlockToBoard(this.blocks, this.fallingBlock);
 	    		this.fallingBlock = null;   		
 	    	}
+    	}
+    	
+    	if (this.hasFallingTetrominoe) {
+    		
+    		// onko alhaalla tilaa??
     	}
     }
 
@@ -102,6 +118,8 @@ public class Board {
     		System.arraycopy(blocks[row], 0, clone[row], 0, blocks[row].length);
     	return clone;
 	}
+
+
 }
 
 

@@ -32,6 +32,10 @@ public class Tetrominoe {
 	public Vector<Block> getBlocks() {
 		return this.piece.vblocks;
 	}
+	
+	public int getDistanceFromCenter() {
+		return this.piece.distanceFromCenter;
+	}
 
 }
 
