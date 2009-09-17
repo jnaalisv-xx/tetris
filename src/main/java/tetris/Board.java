@@ -86,8 +86,12 @@ public class Board {
         return sb.toString();
     }
 
-	private void copyTetrominoeToBoard(Block[][] blocksToBePrinted, Tetrominoe fallingTetrominoe2) {
-		//for(int row = 0; row )		
+	private void copyTetrominoeToBoard(Block[][] blocksToBePrinted, Tetrominoe fallingTetrominoe) {
+		for(Block block : fallingTetrominoe.getBlocks()) {
+			block.x = fallingTetrominoe.x + block.dispX;
+			block.y = fallingTetrominoe.y + block.dispY;			
+			copyBlockToBoard(blocksToBePrinted, block);
+		}
 	}
 
 	private Block[][] cloneBoard(Block[][] blocks) {

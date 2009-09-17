@@ -143,6 +143,7 @@ public class RotatingTetrominoesTest {
             assertEquals(originalShape, shape.toString());
         }
     }
+    
 
     public static class The_O_shape extends TestCase {
 

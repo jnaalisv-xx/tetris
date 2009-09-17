@@ -1,5 +1,7 @@
 package tetris;
 
+import java.util.Vector;
+
 public class IPiece extends Piece {
 	
 	public IPiece() {
@@ -11,20 +13,22 @@ public class IPiece extends Piece {
        ".....\n");
 	}
 	
-	private IPiece(Block[][] blocks)
+	private IPiece(Vector<Block> vBlocks, int size)
 	{
-		super(blocks);
-	}
+		super(vBlocks, size);
+	}	
 
 	@Override
 	public IPiece rotateRight() {
-		int size = blocks.length;
-		int maxIndex = size -1; // tää voi olla vähän huono nimi, en keksi parempaa
-		Block[][] result = new Block[size][size];
-		for(int row = 0; row < size; row++)
-			for(int col = 0; col < size; col++)
-				result[(maxIndex-col) % size][(maxIndex-row) % size] = blocks[row][col];
-		return new IPiece(result);
+
+		// TODO: Onko muita toteutusvaihtoehtoja?
+		
+		Vector<Block> resultVBlocks = new Vector<Block>();
+			
+		for(Block b : this.vblocks) 
+			resultVBlocks.add(new Block(b.toChar(), -1*b.dispY, -1*b.dispX));
+
+		return new IPiece(resultVBlocks, this.size);
 	}	
 	
 	@Override

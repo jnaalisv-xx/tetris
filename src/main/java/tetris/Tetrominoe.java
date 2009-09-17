@@ -1,10 +1,15 @@
 package tetris;
 
+import java.util.Vector;
+
 public class Tetrominoe {
 	
 	public static final Tetrominoe T_SHAPE = new Tetrominoe(new TPiece());
 	public static final Tetrominoe I_SHAPE = new Tetrominoe(new IPiece());
 	public static final Tetrominoe O_SHAPE = new Tetrominoe(new OPiece());
+	
+	public int x;
+	public int y;
 	
 	private final Piece piece;
 	
@@ -22,6 +27,10 @@ public class Tetrominoe {
 
 	public Tetrominoe rotateLeft() {
 		return new Tetrominoe(this.piece.rotateLeft());		
+	}
+	
+	public Vector<Block> getBlocks() {
+		return this.piece.vblocks;
 	}
 
 }

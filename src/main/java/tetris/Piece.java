@@ -1,54 +1,80 @@
 package tetris;
 
-//import java.util.Vector;
+//import java.util.Collections;
+import java.util.Vector;
 
 public class Piece {
 
-	protected final Block[][] blocks;
-	//protected final Vector<Block> vblocks;
+	protected final Vector<Block> vblocks;
+	protected final int size;
+	protected final int distanceFromCenter;
 
 	public Piece(String string) {
+	
 		String[] rows = string.split("\n");
-		int size = rows.length; // nyt jos parametrina annetaan suorakaiden niin homma ei toimi
-		blocks = new Block[size][size];
+		size = rows.length; // nyt jos parametrina annetaan suorakaiden niin homma ei toimi
+		distanceFromCenter = size /2;
+		this.vblocks = new Vector<Block>();	
 		for(int row = 0; row < size; row++)
-			for (int col = 0; col < size; col++)
-				blocks[row][col] = new Block(rows[row].charAt(col));		
+			for (int col = 0; col < size; col++) {
+				this.vblocks.add(
+						new Block(rows[row].charAt(col), 
+								col - distanceFromCenter, 
+								row -distanceFromCenter));
+			}
 	}
 	
-	protected Piece(Block[][] blocks) {
-		this.blocks = blocks;
+	protected Piece(Vector<Block> vblocks, int size)
+	{
+		this.vblocks = vblocks;
+		this.size = size;
+		this.distanceFromCenter = size /2;
 	}
+	
 
 	public String toString() {
-        String s = "";
-        int size = blocks.length; // rivien lkm, jos se on eri kuin sarakkeiden, niin we are fucked
+
+		// TODO: nimeäminen!!!
+		Block[][] tmpBlocks = new Block[size][size];
+
+		// Blokki taulukko johon isketään oikeisiin kohtiin palikat
+        for( Block b : vblocks) 
+        	tmpBlocks[b.dispY + distanceFromCenter][b.dispX + distanceFromCenter] = b;
+
+        // yks vaihtoehto on että meillä on char array johon tökitään merkit ja joka tulostetaan
+        // ja sitten tulostetaan, hmm ois parempi
+		// koska tetrominoe on immutable
+        StringBuilder sb = new StringBuilder();
+
         for (int row = 0; row < size; row++) {
-            for (int col = 0; col < size; col++) 
-            	s += blocks[row][col].toString();
-            s += "\n";
+            for (int col = 0; col < size; col++) {
+            	if (tmpBlocks[row][col] == null)
+            		sb.append(".");
+            	else
+            		sb.append(tmpBlocks[row][col].toChar());
+            }
+            sb.append("\n");
         }
-        return s;
+        return sb.toString();
 	}
 
 	public Piece rotateRight() {
-		int size = blocks.length;
-		Block[][] result = new Block[size][size];
-		for(int row = 0; row < size; row++)
-			for(int col = 0; col < size; col++)
-				result[col][((size-1)-row) % size] = blocks[row][col];
-		// jos suorakaide niin size == columns
-		return new Piece(result);
+
+		Vector<Block> resultVBlocks = new Vector<Block>();
+			
+		for(Block b : this.vblocks) 
+			resultVBlocks.add(new Block(b.toChar(), -1*b.dispY, b.dispX));
+
+		return new Piece(resultVBlocks, this.size);
 	}
 
 	public Piece rotateLeft() {
-		int size = blocks.length; // rows...
-		Block[][] result = new Block[size][size];
-		for(int row = 0; row < size; row++)
-			for(int col = 0; col < size; col++)
-				result[((size-1)-col) % size][row] = blocks[row][col];
-		// jos suorakaide niin size == rows
-		return new Piece(result);
+		Vector<Block> resultVBlocks = new Vector<Block>();
+	
+		for(Block b : this.vblocks) 
+			resultVBlocks.add(new Block(b.toChar(), b.dispY, -1*b.dispX));
+
+		return new Piece(resultVBlocks, this.size);		
 	}
 
 }
