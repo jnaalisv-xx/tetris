@@ -1,3 +1,7 @@
+.project
+.settings
+.classpath
 /*.iws
 /target/
 /*/target/
+target
