@@ -156,32 +156,51 @@ public class Board {
     	return clone;
 	}
 
-	public void moveLeft() {
+	public boolean moveLeft() {
     	if (this.hasFallingTetrominoe) {
     		
-    		// yritetään liikuttaa tetrominoeta yhden verran alas
+    		// yritetään liikuttaa tetrominoeta yhden verran vasemalle
     		if (!tryToMoveTetrominoe(DONT_MOVE_Y,MOVE_LEFT)) {
     			// Tetrominoen liikuttaminen ei onnistunut, joten pysäytetään se
     			
 //    			this.hasFallingTetrominoe = false;
 //    			copyTetrominoeToBoard(this.blocks, this.fallingTetrominoe);
 //    			this.fallingTetrominoe = null;    			
+    			return false;
     		}
+    		return true;
     	}
+    	return false;
 	}
 
-	public void moveRight() {
+	public boolean moveRight() {
     	if (this.hasFallingTetrominoe) {
     		
-    		// yritetään liikuttaa tetrominoeta yhden verran alas
+    		// yritetään liikuttaa tetrominoeta yhden verran oikealle
     		if (!tryToMoveTetrominoe(DONT_MOVE_Y,MOVE_RIGHT)) {
     			// Tetrominoen liikuttaminen ei onnistunut, joten pysäytetään se
     			
 //    			this.hasFallingTetrominoe = false;
 //    			copyTetrominoeToBoard(this.blocks, this.fallingTetrominoe);
 //    			this.fallingTetrominoe = null;    			
+    			return false;
     		}
-    	}	
+    		return true;
+    	}
+    	return false;
+	}
+
+	public void moveDown() {
+    	if (this.hasFallingTetrominoe) {
+    		// yritetään liikuttaa tetrominoeta yhden verran oikealle
+    		if (!tryToMoveTetrominoe(MOVE_DOWN,DONT_MOVE_X)) {
+    			// Tetrominoen liikuttaminen ei onnistunut, joten pysäytetään se
+    			
+//    			this.hasFallingTetrominoe = false;
+//    			copyTetrominoeToBoard(this.blocks, this.fallingTetrominoe);
+//    			this.fallingTetrominoe = null;    			
+    		}
+    	}		
 	}
 
 
