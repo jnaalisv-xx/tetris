@@ -148,8 +148,7 @@ public class Board {
 	}
 
 	private Block[][] cloneBoard(Block[][] blocks) {
-		Block[][] clone = 
-			new Block[blocks.length][blocks[0].length];
+		Block[][] clone = new Block[blocks.length][blocks[0].length];
     	
     	for(int row = 0; row < blocks.length; row++) 
     		System.arraycopy(blocks[row], 0, clone[row], 0, blocks[row].length);
@@ -202,6 +201,55 @@ public class Board {
     		}
     	}		
 	}
+
+	public boolean rotateFallingPieceCW() {
+		Tetrominoe rotated = this.fallingTetrominoe.rotateRight();
+		if (detectCollision(rotated)) 
+			return false;
+			
+		this.fallingTetrominoe = rotated;
+		return true;		
+	}
+
+
+
+	public boolean rotateFallingPieceCCW() {
+		Tetrominoe rotated = this.fallingTetrominoe.rotateLeft();
+		
+		if (detectCollision(rotated)) {
+			// TODO: Wallkick, refaktoroi
+			rotated.moveRight();
+			if (detectCollision(rotated)) {
+				rotated.moveLeft();
+				rotated.moveLeft();
+				if (detectCollision(rotated)) 
+					return false;
+			}
+		}
+			
+		this.fallingTetrominoe = rotated;
+		return true;			
+	}
+
+	private boolean detectCollision(Tetrominoe rotated) {
+		int x;
+		int y;
+		
+		for (Block block : rotated.getBlocks()) { 
+			x = rotated.x + block.dispX;
+			y = rotated.y + block.dispY;
+			
+			if (y > this.rows -1 || y < 0)			
+				return true; 
+
+			if (x < 0 || x > columns -1)
+				return true; 
+			
+			if (this.blocks[y][x] != null)
+				return true;
+		}
+		return false;
+	}	
 
 
 }

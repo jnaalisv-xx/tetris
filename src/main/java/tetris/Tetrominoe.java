@@ -13,8 +13,16 @@ public class Tetrominoe {
 	
 	private final Piece piece;
 	
+	// tän tarvii piece, piecen koordinaatit asetetaan kun palikka tiputetaan
 	private Tetrominoe(Piece piece) {
 		this.piece = piece;		
+	}
+	
+	// tän tarvii käännöksiin
+	private Tetrominoe(Piece piece, int x, int y) {
+		this.piece = piece;		
+		this.x = x;
+		this.y = y;
 	}
 	
 	public String toString() {
@@ -22,11 +30,11 @@ public class Tetrominoe {
 	}
 
 	public Tetrominoe rotateRight() {
-		return new Tetrominoe(this.piece.rotateRight());
+		return new Tetrominoe(this.piece.rotateRight(), this.x, this.y);
 	}
 
 	public Tetrominoe rotateLeft() {
-		return new Tetrominoe(this.piece.rotateLeft());		
+		return new Tetrominoe(this.piece.rotateLeft(), this.x, this.y);		
 	}
 	
 	public Vector<Block> getBlocks() {
@@ -36,6 +44,14 @@ public class Tetrominoe {
 	public int getDistanceFromCenter() {
 		return this.piece.distanceFromCenter;
 	}
+
+	public void moveRight() {
+		this.x++;		
+	}
+	
+	public void moveLeft() {
+		this.x--;		
+	}	
 
 }
 
